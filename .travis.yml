@@ -1,12 +1,84 @@
+# Build script for Travis CI
+#
+
+# use fast-boot container-based hosts
+sudo: false 
+dist: trusty
+
+# no need to check for oracle's java
 language: java
-jdk:
-  - oraclejdk8
-before_install:
-  - cp travis/settings.xml ~/.m2/settings.xml
-before_script:
+jdk: openjdk8
+
+# speed up builds by caching maven local repository
+cache:
+  directories:
+  - "$HOME/.m2/repository"
+
+# as agreed in our SOP
+branches:
+  only:
+  - master
+  - development
+
+# added to make logs look cleaner, crisper, certified fresh
+before_install: unset _JAVA_OPTIONS 
+
+# speed up builds by telling Travis that we don't need any special "installation"
+install: true
+
+# check if we need to add a license file for Vaadin charts
+before_script: 
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3
-script: ./compile.sh
-after_success:
-  - ./run_tests.sh
+  - if [ "$VAADIN_CHARTS_LICENSE_CODE" != "" ]; then
+      echo "$VAADIN_CHARTS_LICENSE_CODE" > ~/.vaadin.charts.developer.license;
+    fi;
+
+# as agreed in our SOP, build everything (don't deploy, just try to 'mvn install' locally, which covers all phases)
+script: ./compile.sh && ./run_tests.sh
+# upload code coverage report, generate maven site (javadocs, documentation, static code analysis, etc.)
+after_success: 
+- bash <(curl -s https://codecov.io/bash)
+- mvn --quiet --activate-profiles !development-build,!release-build --settings .travis.settings.xml site
+
+# upload to maven
+deploy:
+  # as agreed in our SOP, builds on development branch will deploy to our maven repository after validating
+  # the artifact has a proper SNAPSHOT version
+  # artifact will be installed in our testing instance if it is a .war file
+- skip_cleanup: true
+  provider: script
+  script: mvn --quiet --activate-profiles development-build,!release-build --settings .travis.settings.xml deploy
+  on:
+    branch: development
+    condition: '"$TRAVIS_EVENT_TYPE" = "push"'
+  # as agreed in our SOP, tagging a commit on the master branch will upload to our maven repository
+  # after validating the artifact has a proper release version
+  # artifact will be installed in our testing instance if it is a .war file
+- skip_cleanup: true
+  provider: script
+  script: mvn --quiet --activate-profiles !development-build,release-build --settings .travis.settings.xml deploy
+  on:
+    branch: master
+    tags: true
+
+# change according to your needs, but we recommend to deactivate email notifications
+# for now, we configured Travis to send a notification to the #travis-ci channel 
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+  slack: 
+    on_success: never
+    on_failure: always
+    # edit the following section if you want to get slack notifications
+    rooms:
+      - secure: "***"
+
+#
+# credentials
+env:
+  global:
+    - secure: "Qh+xUVx+rYR6w8KO+TubvvB0MsbjQB1yQl/zREZTsKwUtxbpEn/KO6coa11MwCaVPVMJI95Le0bl7epiSMZdEBouZF4+h/kamkLhwZBdirViESU82H0SH26HyfT6DIkqQYnLQgHOxlEbP8TxIIvdwcu7ubCwgBWXUPxcmAwkttN4QwxtWvY5/eixt1b5YPAh5f+rwDgnjZgS80jnzm+wUsp3YIH0LOReXzfOWw2L/H1XF/9d45CMPPtH2J8ukFERwU4j6uCknZFTpANwElJxi2gjJDQTEb6YUVXwfbA+EYGy43OzLczMaMUss2Dlh0fOnja4l21U2OxQ0wOiNl4f05huv3rpBIhcXENaoEZsjyqwSy5dff91uqU+At9O+h86drNbz+jaE39P8Up7VTXwVjIGJZUZ12wGpoH5LPdGc0A92PzyLQllQdyaWaMLbv6Hm5uI3Arkra9PTax9bVzMigT9D4OymgKjof1y/1DpVtJUI5ehjpm/TzHFyDS3mBILm5PEZUr46UMQobgx4adoUyaSIlYjb46VX7Yni7j0Vvsy/WDocuApAvDyZjO3lB/eja1VkZ3tFaIb8maYk1wNT/HLPo8aVupf3rY7vGhWdY5kAkHzQzhlcE/zfffqEMDhPLxutQF22zypCPpQskg1RbkcdSTLlqcKyU+3VE2CXC8="
+    - secure: "L3Qi2gw+wWkDgm6yvPBXhHQByFMZkU7aQo+uYvc9vWy9v6h4ZZT/wt0d5s2wUzHik2sG9qO1UGpb/Eu+516tYXzOUa0ZleqFcI/Bzk9bM8M94Umu590iey022daHaOF4LvndOWmW0WTmPXSnNa1Mbot27QBZfWd73yObwQsWNbrqimMZ2TYl/rj+fcpbc9d5N4hIE5xEwc74WedTjcoGICzrhxgpFmjtbTbwrhf6fo35V/bHNk5JRZPvXOTq+J+/ZveqoQW2VRcTXBQ/zX8CWyrbU5R+xvrL0rvpr7R/qDwlA9UkApnsxMtGwxt6OxZRS7LgqiTVZdLRmzdCf2B/giWY4N4w6klJ1POpm2ianfJBVOeeuBO0uiDb9H+nmS5AOhlPRKKE1yWdR6NLyxAO6dpn56os7uHD01UQe6ZXuYB/V/j1icsiSue9AozaLK0LQplG19L4K7NoCQEQvlMpCOxQvyjs6rk0WGs+ylnLKeNClnORm9UZLShWXitLx3/xwWmSHdiLsOeqlRg4WAYJX9DIjmY8y5M1+M+VXi1VhVDEA3H79ypU8MOOSkJF7kpE5i+Y/kXRD+f1vUFQtFpa7thIJhupWGRH+gVEaVpbLLfgwIaKUz6975p0ODEzpNfymwrqU8MlhpudAcWJbK+uzjiZOjj3VJmsTSeFBxR4YBY="

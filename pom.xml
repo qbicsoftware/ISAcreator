@@ -780,6 +780,70 @@
     </dependencies>
 
     <profiles>
+        <!-- enforces that version strings are development versions, i.e., they contain the suffix -SNAPSHOT -->
+		<profile>
+			<id>development-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0-M2</version>
+						<executions>
+							<execution>
+								<id>enforce-no-releases</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireSnapshotVersion>
+											<message>No releases allowed. Version must end with "-SNAPSHOT". Check that the &lt;version&gt; tag contains a non-release version string.</message>
+										</requireSnapshotVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- enforces that version strings are release versions, i.e., they do not contain the suffix -SNAPSHOT -->
+			<id>release-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0-M2</version>
+						<executions>
+							<execution>
+								<id>enforce-no-snapshots</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireReleaseVersion>
+											<message>Only release versions are allowed. The suffix "-SNAPSHOT" is not allowed in release versions. Check that the &lt;version&gt; contains a release version string.</message>
+										</requireReleaseVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
         <!--<profile>-->
         <!--<id>default-tools.jar</id>-->
         <!--<activation>-->
