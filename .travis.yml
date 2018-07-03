@@ -9,6 +9,17 @@ dist: trusty
 language: java
 jdk: openjdk8
 
+# speed up builds by caching maven local repository
+cache:
+  directories:
+  - "$HOME/.m2/repository"
+
+# as agreed in our SOP
+branches:
+  only:
+  - master
+  - development
+
 before_install:
   - cp travis/settings.xml ~/.m2/settings.xml
 before_script:
