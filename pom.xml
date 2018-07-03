@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.isatools</groupId>
     <artifactId>ISAcreator</artifactId>
@@ -182,7 +182,8 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!-- http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl is no longer available, commenting out this plugin -->
+            <!-- plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
@@ -198,7 +199,6 @@
                             </wsdlUrls>
                             <packageName>uk.ac.ebi.cdb.client</packageName>
                             <sourceDestDir>target/generated/citexplore</sourceDestDir>
-                            <!-- Without this, multiple WSDLs won't be processed :( -->
                             <staleFile>${project.build.directory}/jaxws/stale/wsdl.cdb.done</staleFile>
                         </configuration>
                     </execution>
@@ -233,7 +233,7 @@
 
                 </dependencies>
 
-            </plugin>
+            </plugin -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -247,15 +247,14 @@
                         </goals>
                         <configuration>
                             <!--<artifactSet>-->
-                                <!--<excludes>-->
-                                    <!--<exclude>org.apache.lucene:lucene-core</exclude>-->
-                                    <!--<exclude>lucene:*</exclude>-->
-                                <!--</excludes>-->
+                            <!--<excludes>-->
+                            <!--<exclude>org.apache.lucene:lucene-core</exclude>-->
+                            <!--<exclude>lucene:*</exclude>-->
+                            <!--</excludes>-->
                             <!--</artifactSet>-->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
@@ -757,22 +756,22 @@
 
     <profiles>
         <!--<profile>-->
-            <!--<id>default-tools.jar</id>-->
-            <!--<activation>-->
-                <!--<property>-->
-                    <!--<name>java.vendor</name>-->
-                    <!--<value>Sun Microsystems Inc.</value>-->
-                <!--</property>-->
-            <!--</activation>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>com.sun</groupId>-->
-                    <!--<artifactId>tools</artifactId>-->
-                    <!--<version>1.4.2</version>-->
-                    <!--<scope>system</scope>-->
-                    <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
+        <!--<id>default-tools.jar</id>-->
+        <!--<activation>-->
+        <!--<property>-->
+        <!--<name>java.vendor</name>-->
+        <!--<value>Sun Microsystems Inc.</value>-->
+        <!--</property>-->
+        <!--</activation>-->
+        <!--<dependencies>-->
+        <!--<dependency>-->
+        <!--<groupId>com.sun</groupId>-->
+        <!--<artifactId>tools</artifactId>-->
+        <!--<version>1.4.2</version>-->
+        <!--<scope>system</scope>-->
+        <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
+        <!--</dependency>-->
+        <!--</dependencies>-->
         <!--</profile>-->
 
         <profile>

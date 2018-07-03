@@ -42,7 +42,7 @@ import org.isatools.isacreator.gui.StudyDataEntry;
 import org.isatools.isacreator.model.InvestigationPublication;
 import org.isatools.isacreator.model.Publication;
 import org.isatools.isacreator.model.StudyPublication;
-import uk.ac.ebi.cdb.client.*;
+//import uk.ac.ebi.cdb.client.*;
 
 import javax.xml.ws.WebServiceRef;
 import java.util.ArrayList;
@@ -50,10 +50,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+// WSDL http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl does not exist anymore
 public class CiteExploreClient {
 
-
+/*
     @WebServiceRef(wsdlLocation = "http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl")
     private WSCitationImplService service;
 
@@ -136,4 +136,5 @@ public class CiteExploreClient {
 
         return resultSet;
     }
+    */
 }
