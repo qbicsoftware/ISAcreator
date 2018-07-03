@@ -1,6 +1,14 @@
+# Build script for Travis CI
+#
+
+# use fast-boot container-based hosts
+sudo: false 
+dist: trusty
+
+# no need to check for oracle's java
 language: java
-jdk:
-  - openjdk8
+jdk: openjdk8
+
 before_install:
   - cp travis/settings.xml ~/.m2/settings.xml
 before_script:
