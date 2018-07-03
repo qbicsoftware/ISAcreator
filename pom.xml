@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.isatools</groupId>
     <artifactId>ISAcreator</artifactId>
     <packaging>bundle</packaging>
-    <version>1.7.11</version>
+    <version>1.7.12-SNAPSHOT</version>
     <name>ISAcreator</name>
     <url>http://www.isa-tools.org</url>
 
@@ -63,26 +64,60 @@
             <id>java-dev</id>
             <url>http://download.java.net/maven/2/</url>
         </repository>
-		<repository>
-			<id>liferay-releases</id>
-			<url>https://repository.liferay.com/nexus/content/repositories/liferay-public-releases/com/liferay/portal/</url>
+        <repository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</snapshots>
+			<id>nexus-snapshots</id>
+			<name>QBiC Snapshots</name>
+			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-snapshots</url>
 		</repository>
-		<!-- vaadin repos -->
 		<repository>
-			<id>vaadin-addons</id>
-			<url>http://maven.vaadin.com/vaadin-addons</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>nexus-releases</id>
+			<name>QBiC Releases</name>
+			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-releases</url>
 		</repository>
-	</repositories>
+
+    </repositories>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                    <check />
+                </configuration>
+            </plugin>
+            <plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.2</version>
+			</plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.0</version>
+                <version>3.7.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <!--<executable>apt</executable>-->
                     <fork>true</fork>
                     <debug>true</debug>
@@ -189,28 +224,28 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!-- http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl is no longer available, commenting out this plugin -->
+            <!-- plugin>
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.2</version>
-			<!-- 		<executions>
-					<execution>
-						<goals>
-							<goal>wsimport</goal>
-						</goals>
-						<configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
 
-							<wsdlUrls>
-								<wsdlUrl>https://www.ebi.ac.uk/europepmc/webservices/soap?wsdl</wsdlUrl>
-							</wsdlUrls>
-							<packageName>uk.ac.ebi.cdb.client</packageName>
-							<sourceDestDir>target/generated/citexplore</sourceDestDir>
-							 Without this, multiple WSDLs won't be processed :(
-							<staleFile>${project.build.directory}/jaxws/stale/wsdl.cdb.done</staleFile>
-						</configuration>
-					</execution>
+                            <wsdlUrls>
+                                <wsdlUrl>http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>uk.ac.ebi.cdb.client</packageName>
+                            <sourceDestDir>target/generated/citexplore</sourceDestDir>
+                            <staleFile>${project.build.directory}/jaxws/stale/wsdl.cdb.done</staleFile>
+                        </configuration>
+                    </execution>
 
-				</executions> -->
+                </executions>
 
                 <dependencies>
 
@@ -240,7 +275,7 @@
 
                 </dependencies>
 
-            </plugin>
+            </plugin -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -254,26 +289,25 @@
                         </goals>
                         <configuration>
                             <!--<artifactSet>-->
-                                <!--<excludes>-->
-                                    <!--<exclude>org.apache.lucene:lucene-core</exclude>-->
-                                    <!--<exclude>lucene:*</exclude>-->
-                                <!--</excludes>-->
+                            <!--<excludes>-->
+                            <!--<exclude>org.apache.lucene:lucene-core</exclude>-->
+                            <!--<exclude>lucene:*</exclude>-->
+                            <!--</excludes>-->
                             <!--</artifactSet>-->
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
-            <plugin>
+            <!-- plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
-            </plugin>
+            </plugin -->
 
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -291,24 +325,6 @@
 
         </plugins>
 
-        <resources>
-            <!-- defines the files to be filtered -->
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>true</filtering>
-                <includes>
-                    <include>**/*.properties</include>
-                </includes>
-            </resource>
-            <!--   defines the files to copy unaltered  -->
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <filtering>false</filtering>
-                <excludes>
-                    <exclude>**/*.properties</exclude>
-                </excludes>
-            </resource>
-        </resources>
 
     </build>
 
@@ -763,23 +779,87 @@
     </dependencies>
 
     <profiles>
+        <!-- enforces that version strings are development versions, i.e., they contain the suffix -SNAPSHOT -->
+		<profile>
+			<id>development-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0-M2</version>
+						<executions>
+							<execution>
+								<id>enforce-no-releases</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireSnapshotVersion>
+											<message>No releases allowed. Version must end with "-SNAPSHOT". Check that the &lt;version&gt; tag contains a non-release version string.</message>
+										</requireSnapshotVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<!-- enforces that version strings are release versions, i.e., they do not contain the suffix -SNAPSHOT -->
+			<id>release-build</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-enforcer-plugin</artifactId>
+						<version>3.0.0-M2</version>
+						<executions>
+							<execution>
+								<id>enforce-no-snapshots</id>
+								<goals>
+									<goal>enforce</goal>
+								</goals>
+								<configuration>
+									<rules>
+										<requireReleaseVersion>
+											<message>Only release versions are allowed. The suffix "-SNAPSHOT" is not allowed in release versions. Check that the &lt;version&gt; contains a release version string.</message>
+										</requireReleaseVersion>
+									</rules>
+									<fail>true</fail>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
         <!--<profile>-->
-            <!--<id>default-tools.jar</id>-->
-            <!--<activation>-->
-                <!--<property>-->
-                    <!--<name>java.vendor</name>-->
-                    <!--<value>Sun Microsystems Inc.</value>-->
-                <!--</property>-->
-            <!--</activation>-->
-            <!--<dependencies>-->
-                <!--<dependency>-->
-                    <!--<groupId>com.sun</groupId>-->
-                    <!--<artifactId>tools</artifactId>-->
-                    <!--<version>1.4.2</version>-->
-                    <!--<scope>system</scope>-->
-                    <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
-                <!--</dependency>-->
-            <!--</dependencies>-->
+        <!--<id>default-tools.jar</id>-->
+        <!--<activation>-->
+        <!--<property>-->
+        <!--<name>java.vendor</name>-->
+        <!--<value>Sun Microsystems Inc.</value>-->
+        <!--</property>-->
+        <!--</activation>-->
+        <!--<dependencies>-->
+        <!--<dependency>-->
+        <!--<groupId>com.sun</groupId>-->
+        <!--<artifactId>tools</artifactId>-->
+        <!--<version>1.4.2</version>-->
+        <!--<scope>system</scope>-->
+        <!--<systemPath>${java.home}/../lib/tools.jar</systemPath>-->
+        <!--</dependency>-->
+        <!--</dependencies>-->
         <!--</profile>-->
 
         <profile>

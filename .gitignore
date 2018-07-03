@@ -21,6 +21,10 @@ overlays/
 *.iws
 .idea/
 
+# Files created by VS Code #
+############################
+.factorypath
+
 # Files created by Vagrant #
 ############################
 .vagrant
@@ -83,3 +87,4 @@ isatab files/
 src/main/resources/Configurations/
 Plugins/
 Settings/
+ProgramData/

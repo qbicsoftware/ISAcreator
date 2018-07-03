@@ -54,6 +54,8 @@ import javax.swing.event.MouseInputAdapter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Map;
+// see line 342
+import java.util.Collections;
 
 /**
  * PublicationLocatorUI
@@ -335,29 +337,30 @@ public class PublicationLocatorUI extends JFrame implements WindowListener {
 
                         SearchOption so = selectedSection == PUBMED_SEARCH ? SearchOption.PUBMED : SearchOption.DOI;
 
-//                        Map<String, Publication> result = pubExplorer.getPublication(so, searchField.getText(), parent);
+                        // line would not compile
+                        //Map<String, Publication> result = pubExplorer.getPublication(so, searchField.getText(), parent);
+                        Map<String, Publication> result = Collections.<String, Publication>emptyMap();                        
 
-//                        for (String key : result.keySet()) {
-//                            currentPublication = result.get(key);
-//                            // push to SearchResultPane
-//                            resetButtons();
-//                            resultPane.showPublication(currentPublication);
-//                            selectedSection = RESULT;
-//                            swapContainers(resultPane);
-//                            resultButton.setIcon(resultOver);
-//                            export.setEnabled(true);
-//                            break;
-//                        }
-                        throw new NoPublicationFoundException(so, searchField.getText());
+                        for (String key : result.keySet()) {
+                            currentPublication = result.get(key);
+                            // push to SearchResultPane
+                            resetButtons();
+                            resultPane.showPublication(currentPublication);
+                            selectedSection = RESULT;
+                            swapContainers(resultPane);
+                            resultButton.setIcon(resultOver);
+                            export.setEnabled(true);
+                            break;
+                        }
                     }
-                } catch (NoPublicationFoundException e) {
+                /*} catch (NoPublicationFoundException e) {
                     resetButtons();
                     selectedSection = RESULT;
                     resultPane.showError();
                     swapContainers(resultPane);
                     resultButton.setIcon(resultOver);
                     e.printStackTrace();
-                } catch (Exception e) {
+                */} catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     if (progressIndicator.isStarted()) {
