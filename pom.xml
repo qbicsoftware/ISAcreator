@@ -5,7 +5,7 @@
     <groupId>life.qbic</groupId>
     <artifactId>isa-creator-lib</artifactId>
     <packaging>bundle</packaging>
-    <version>1.7.12</version> 
+    <version>1.7.12</version>
     <name>ISAcreator</name>
     <url>http://www.isa-tools.org</url>
 
