@@ -64,7 +64,6 @@
             <id>java-dev</id>
             <url>http://download.java.net/maven/2/</url>
         </repository>
-
         <repository>
 			<releases>
 				<enabled>false</enabled>
@@ -883,11 +882,23 @@
 
 
     <distributionManagement>
-        <repository>
+        <!--  repository>
             <id>oerc-repo</id>
             <name>OeRC Maven repository</name>
             <url>http://frog.oerc.ox.ac.uk:8080/nexus-2.1.2/content/repositories/releases</url>
-        </repository>
+        </repository -->
+        <repository>
+			<uniqueVersion>true</uniqueVersion>
+			<id>nexus-releases</id>
+			<name>QBiC Releases</name>
+			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>nexus-snapshots</id>
+			<name>QBiC Snapshots</name>
+			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-snapshots</url>
+		</snapshotRepository>
     </distributionManagement>
 
 
