@@ -29,7 +29,7 @@ For programmatic management of ISA metadata for experimental descriptions (ISA-T
 
 ## Development
 
-[![Build Status](https://travis-ci.org/ISA-tools/ISAcreator.svg?branch=master)](https://travis-ci.org/ISA-tools/ISAcreator)  [![Coverage Status](https://coveralls.io/repos/github/ISA-tools/ISAcreator/badge.svg?branch=development)](https://coveralls.io/github/ISA-tools/ISAcreator?branch=development)
+[![Build Status](https://travis-ci.com/qbicsoftware/isa-creator-lib.svg?branch=development)](https://travis-ci.com/qbicsoftware/isa-creator-lib)[![Code Coverage](https://codecov.io/gh/qbicsoftware/isa-creator-lib/branch/development/graph/badge.svg)](https://codecov.io/gh/qbicsoftware/isa-creator-lib)
 
 ### Running ISAcreator
 
