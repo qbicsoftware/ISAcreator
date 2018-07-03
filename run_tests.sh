@@ -26,7 +26,7 @@ cd ../
 echo "Running tests"
 
 # now run tests
-mvn $MVNOPTS --quiet clean test cobertura:cobertura #jacoco:report coveralls:report
+mvn $MVNOPTS --quiet test cobertura:cobertura install #jacoco:report coveralls:report
 
 echo "Testing completed successfully!"
 
