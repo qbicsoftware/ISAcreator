@@ -64,10 +64,10 @@ echo "Changing back to project folder..."
 pwd
 
 ###installing xalan dependency
-mvn dependency:get -Dartifact=xalan:xalan:2.4.0
-mvn install:install-file -Dfile="$HOME/.m2/repository/xalan/xalan/2.4.0/xalan-2.4.0.jar" -DgroupId=xalan -DartifactId=xalan -Dversion=2.4 -Dpackaging=jar
+mvn --quiet dependency:get -Dartifact=xalan:xalan:2.4.0
+mvn --quiet install:install-file -Dfile="$HOME/.m2/repository/xalan/xalan/2.4.0/xalan-2.4.0.jar" -DgroupId=xalan -DartifactId=xalan -Dversion=2.4 -Dpackaging=jar
 
-mvn $MVNOPTS -Dmaven.test.skip=$SKIP_TESTS clean assembly:assembly -Pbuild
+mvn $MVNOPTS --quiet -Dmaven.test.skip=$SKIP_TESTS clean assembly:assembly -Pbuild
 
 
 mkdir "isatab files"
