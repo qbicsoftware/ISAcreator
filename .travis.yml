@@ -27,13 +27,13 @@ before_install: unset _JAVA_OPTIONS
 install: true
 
 # check if we need to add a license file for Vaadin charts
-before_script: 
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
-  - if [ "$VAADIN_CHARTS_LICENSE_CODE" != "" ]; then
-      echo "$VAADIN_CHARTS_LICENSE_CODE" > ~/.vaadin.charts.developer.license;
-    fi;
+before_script: true
+#  - export DISPLAY=:99.0
+#  - sh -e /etc/init.d/xvfb start
+#  - sleep 3
+#  - if [ "$VAADIN_CHARTS_LICENSE_CODE" != "" ]; then
+#      echo "$VAADIN_CHARTS_LICENSE_CODE" > ~/.vaadin.charts.developer.license;
+#    fi;
 
 # as agreed in our SOP, build everything (don't deploy, just try to 'mvn install' locally, which covers all phases)
 script: ./compile.sh && ./run_tests.sh
