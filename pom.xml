@@ -505,12 +505,19 @@
                         <groupId>uk.ac.ebi</groupId>
                         <artifactId>ols</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.isatools</groupId>
+                        <artifactId>graph2tab</artifactId>
+                    </exclusion>
 
                     <exclusion>
                         <groupId>uk.ac.ebi</groupId>
                         <artifactId>jutils</artifactId>
                     </exclusion>
-
+                    <exclusion>
+                        <groupId>uk.ac.ebi.pride</groupId>
+                        <artifactId>pride-core</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>cpdetector</groupId>
                         <artifactId>cpdetector</artifactId>
