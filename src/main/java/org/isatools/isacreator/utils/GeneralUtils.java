@@ -39,10 +39,8 @@ package org.isatools.isacreator.utils;
 
 import org.apache.log4j.Logger;
 import org.isatools.isacreator.configuration.FieldObject;
-import org.isatools.isacreator.gui.ISAcreator;
 import org.isatools.isacreator.model.GeneralFieldTypes;
 import org.isatools.isacreator.spreadsheet.model.TableReferenceObject;
-import uk.ac.ebi.utils.io.DownloadUtils;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -171,23 +169,6 @@ public class GeneralUtils {
 
         in.close();
         out.close();
-    }
-
-
-    public static void main(String[] args) throws Exception {
-
-        String configurationFilesLocation = PropertyFileIO.retrieveDefaultSettings().getProperty("configurationFilesLocation");
-        String tmpDirectory = GeneralUtils.createTmpDirectory("Configurations");
-        String downloadedFile = tmpDirectory+"config.zip";
-        boolean downloaded = DownloadUtils.downloadFile(configurationFilesLocation, downloadedFile);
-        System.out.println("downloadedFile="+downloadedFile);
-        try{
-            String unzipped = GeneralUtils.unzip(downloadedFile);
-            System.out.println("unzipped="+unzipped);
-        }catch(IOException ex){
-            ex.printStackTrace();
-
-        }
     }
 
 }

@@ -109,11 +109,11 @@ public class PropertyFileIO {
         return userSettings;
     }
 
-    public static void updateISAcreatorProperties(Properties programProperties) {
-        for (String propertyName : programProperties.stringPropertyNames()) {
-            ISAcreatorProperties.setProperty(propertyName, programProperties.get(propertyName).toString());
-        }
-    }
+//    public static void updateISAcreatorProperties(Properties programProperties) {
+//        for (String propertyName : programProperties.stringPropertyNames()) {
+//            ISAcreatorProperties.setProperty(propertyName, programProperties.get(propertyName).toString());
+//        }
+//    }
 
     public static void saveProperties(Properties programProperties, String propertiesFile) {
         try {

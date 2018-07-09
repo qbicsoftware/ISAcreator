@@ -43,6 +43,8 @@ import au.com.bytecode.opencsv.CSVParser;
 import org.apache.commons.collections15.OrderedMap;
 import org.apache.commons.collections15.map.ListOrderedMap;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.isatools.errorreporter.model.ErrorLevel;
 import org.isatools.errorreporter.model.ErrorMessage;
 import org.isatools.isacreator.io.importisa.investigationproperties.InvestigationFileSection;
@@ -50,7 +52,6 @@ import org.isatools.isacreator.io.importisa.investigationproperties.Investigatio
 import org.isatools.isacreator.io.importisa.investigationproperties.InvestigationStructureLoader;
 import org.isatools.isacreator.utils.StringProcessing;
 import org.isatools.isacreator.utils.datastructures.SetUtils;
-import uk.ac.ebi.utils.collections.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -146,7 +147,7 @@ public class InvestigationImport {
             }
         }
 
-        return new Pair<Boolean, OrderedMap<String, OrderedMap<InvestigationFileSection, OrderedMap<String, List<String>>>>>(
+        return new MutablePair<Boolean, OrderedMap<String, OrderedMap<InvestigationFileSection, OrderedMap<String, List<String>>>>>(
                 isValidInvestigationSections(importedInvestigationFile), importedInvestigationFile);
     }
 
@@ -182,8 +183,8 @@ public class InvestigationImport {
                 Set<String> requiredValuesAsLowercase = setUtils.getLowerCaseSetContents(sections.get(section).getRequiredValues());
 
                 Pair<Boolean, Set<String>> equalityResult = setUtils.compareSets(minorSectionParts, requiredValuesAsLowercase, false);
-                if (!equalityResult.fst) {
-                    for (String sectionValue : equalityResult.snd) {
+                if (!equalityResult.getLeft()) {
+                    for (String sectionValue : equalityResult.getRight()) {
                         messages.add(new ErrorMessage(ErrorLevel.ERROR, fmt.format(new Object[]{sectionValue, section})));
                     }
                 }
@@ -198,9 +199,9 @@ public class InvestigationImport {
             Pair<Boolean, Set<InvestigationFileSection>> equalityResult = setUtils.compareSets(majorSectionParts, requiredSections, true);
 
             // if false,
-            if (!equalityResult.fst) {
-                if (equalityResult.snd != null) {
-                    for (InvestigationFileSection section : equalityResult.snd) {
+            if (!equalityResult.getLeft()) {
+                if (equalityResult.getRight() != null) {
+                    for (InvestigationFileSection section : equalityResult.getRight()) {
                         messages.add(new ErrorMessage(ErrorLevel.ERROR, fmt.format(new Object[]{section, mainSection.substring(0, mainSection.lastIndexOf("-"))})));
                     }
                 } else {

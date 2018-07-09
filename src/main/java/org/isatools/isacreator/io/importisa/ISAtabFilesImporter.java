@@ -1,29 +1,6 @@
 package org.isatools.isacreator.io.importisa;
 
-import org.apache.commons.collections15.OrderedMap;
-import org.apache.log4j.Logger;
-import org.isatools.errorreporter.model.ErrorLevel;
-import org.isatools.errorreporter.model.ErrorMessage;
-import org.isatools.errorreporter.model.FileType;
-import org.isatools.errorreporter.model.ISAFileErrorReport;
-import org.isatools.isacreator.configuration.MappingObject;
-import org.isatools.isacreator.gui.reference.DataEntryReferenceObject;
-import org.isatools.isacreator.io.importisa.errorhandling.exceptions.MalformedInvestigationException;
-import org.isatools.isacreator.io.importisa.investigationproperties.InvestigationFileSection;
-
 import org.isatools.isacreator.managers.ConfigurationManager;
-
-import org.isatools.isacreator.model.Assay;
-import org.isatools.isacreator.model.Investigation;
-import org.isatools.isacreator.model.Study;
-import org.isatools.isacreator.settings.ISAcreatorProperties;
-import org.isatools.isacreator.spreadsheet.model.TableReferenceObject;
-import uk.ac.ebi.utils.collections.Pair;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by the ISA team
@@ -35,9 +12,6 @@ import java.util.List;
  * @author <a href="mailto:alejandra.gonzalez.beltran@gmail.com">Alejandra Gonzalez-Beltran</a>
  */
 public class ISAtabFilesImporter extends ISAtabImporter {
-
-    private static final Logger log = Logger.getLogger(ISAtabFilesImporter.class.getName());
-
 
     /**
      * ImportISAFiles provides a facility for you to import ISATAB files

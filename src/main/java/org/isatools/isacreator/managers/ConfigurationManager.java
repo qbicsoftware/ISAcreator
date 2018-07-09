@@ -1,6 +1,5 @@
 package org.isatools.isacreator.managers;
 
-import org.isatools.isacreator.autofiltercombo.AutoFilterComboCellEditor;
 import org.isatools.isacreator.configuration.MappingObject;
 import org.isatools.isacreator.configuration.io.ConfigXMLParser;
 import org.isatools.isacreator.spreadsheet.model.TableReferenceObject;
@@ -87,7 +86,7 @@ public class ConfigurationManager {
 
         Collections.sort(tempTechTypes);
 
-        tempTechTypes.add(0, AutoFilterComboCellEditor.BLANK_VALUE);
+//        tempTechTypes.add(0, AutoFilterComboCellEditor.BLANK_VALUE);
 
         return tempTechTypes.toArray(new String[tempTechTypes.size()]);
     }

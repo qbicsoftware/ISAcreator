@@ -331,11 +331,11 @@
     <dependencyManagement>
         <dependencies>
 
-            <dependency>
+            <!--dependency>
                 <groupId>net.java.dev.fuse</groupId>
                 <artifactId>fuse-core</artifactId>
                 <version>0.4</version>
-            </dependency>
+            </dependency-->
 
             <dependency>
                 <groupId>commons-net</groupId>
@@ -349,7 +349,7 @@
                 <version>2.0.1</version>
             </dependency>
 
-            <dependency>
+           <dependency>
                 <groupId>net.sourceforge.collections</groupId>
                 <artifactId>collections-generic</artifactId>
                 <version>4.01</version>
@@ -361,17 +361,17 @@
                 <version>2.1</version>
             </dependency>
 
-            <dependency>
+            <!--dependency>
                 <groupId>prefuse</groupId>
                 <artifactId>prefuse</artifactId>
                 <version>1.0.1</version>
-            </dependency>
+            </dependency-->
 
-            <dependency>
+            <!--dependency>
                 <groupId>org.profusians</groupId>
                 <artifactId>profusians</artifactId>
                 <version>beta-20080629</version>
-            </dependency>
+            </dependency-->
 
             <dependency>
                 <groupId>net.minidev</groupId>
@@ -379,7 +379,7 @@
                 <version>2.0-RC3</version>
             </dependency>
 
-            <dependency>
+ <!--       <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
                 <version>2.4</version>
@@ -389,9 +389,9 @@
                 <groupId>javax.xml.ws</groupId>
                 <artifactId>jaxws-api</artifactId>
                 <version>2.2.5</version>
-            </dependency>
+            </dependency-->
 
-            <dependency>
+           <!--   <dependency>
                 <groupId>javax.activation</groupId>
                 <artifactId>activation</artifactId>
                 <version>1.1</version>
@@ -403,7 +403,7 @@
                 <version>2.2.3</version>
             </dependency>
 
-            <dependency>
+          <dependency>
                 <groupId>javax.jws</groupId>
                 <artifactId>jsr181-api</artifactId>
                 <version>1.0-MR1</version>
@@ -421,7 +421,7 @@
                 <version>1.0.1</version>
             </dependency>
 
-            <dependency>
+              <dependency>
                 <groupId>net.sourceforge.jexcelapi</groupId>
                 <artifactId>jxl</artifactId>
                 <version>2.6.3</version>
@@ -433,11 +433,11 @@
                 </exclusions>
             </dependency>
 
-            <dependency>
+          dependency>
                 <groupId>org.apache.xmlbeans</groupId>
                 <artifactId>xmlbeans</artifactId>
                 <version>2.3.0</version>
-            </dependency>
+            </dependency>-->
 
             <dependency>
                 <groupId>log4j</groupId>
@@ -458,13 +458,13 @@
                 <version>0.6</version>
             </dependency>
 
-            <dependency>
+        <!--     <dependency>
                 <groupId>com.explodingpixels</groupId>
                 <artifactId>scroller</artifactId>
                 <version>0.1</version>
             </dependency>
 
-            <dependency>
+             dependency>
                 <groupId>uk.ac.ebi</groupId>
                 <artifactId>jutils</artifactId>
                 <version>1.4</version>
@@ -481,7 +481,7 @@
                     </exclusion>
                 </exclusions>
 
-            </dependency>
+            </dependency-->
 
             <dependency>
                 <groupId>org.apache.felix</groupId>
@@ -495,6 +495,7 @@
                 <version>4.2.1</version>
             </dependency>
 
+<!-- needed for Config XML Parser-->
             <dependency>
                 <groupId>org.isatools</groupId>
                 <artifactId>import_layer</artifactId>
@@ -524,7 +525,7 @@
             </dependency>
 
 
-            <!-- Dependencies for GS code -->
+            <!-- Dependencies for GS code 
             <dependency>
                 <groupId>genomespace</groupId>
                 <artifactId>cdk</artifactId>
@@ -541,7 +542,7 @@
                 <groupId>com.google.zxing</groupId>
                 <artifactId>core</artifactId>
                 <version>2.1</version>
-            </dependency>
+            </dependency>-->
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -574,11 +575,15 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <dependency>
+		<dependency>
+			<groupId>life.qbic</groupId>
+			<artifactId>data-model-lib</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+       <!-- <dependency>
             <groupId>net.java.dev.fuse</groupId>
             <artifactId>fuse-core</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>commons-net</groupId>
@@ -590,7 +595,7 @@
             <artifactId>commons-io</artifactId>
         </dependency>
 
-        <dependency>
+       <dependency>
             <groupId>net.sourceforge.collections</groupId>
             <artifactId>collections-generic</artifactId>
         </dependency>
@@ -600,22 +605,22 @@
             <artifactId>opencsv</artifactId>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>prefuse</groupId>
             <artifactId>prefuse</artifactId>
-        </dependency>
+        </dependency> 
 
         <dependency>
             <groupId>org.profusians</groupId>
             <artifactId>profusians</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>net.minidev</groupId>
             <artifactId>json-smart</artifactId>
         </dependency>
 
-        <dependency>
+ <!--        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
@@ -658,8 +663,7 @@
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>2.3.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>log4j</groupId>
@@ -677,12 +681,12 @@
             <artifactId>ISAtabErrorReporter</artifactId>
         </dependency>
 
-        <dependency>
+      <!--  <dependency>
             <groupId>com.explodingpixels</groupId>
             <artifactId>scroller</artifactId>
         </dependency>
 
-        <dependency>
+        < dependency>
             <groupId>uk.ac.ebi</groupId>
             <artifactId>jutils</artifactId>
         </dependency>
@@ -696,14 +700,15 @@
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.framework</artifactId>
         </dependency>
-
+-->
+ 
         <dependency>
             <groupId>org.isatools</groupId>
             <artifactId>import_layer</artifactId>
         </dependency>
 
 
-        <!-- Dependencies for GS code -->
+        <!-- Dependencies for GS code 
         <dependency>
             <groupId>genomespace</groupId>
             <artifactId>cdk</artifactId>
@@ -717,13 +722,13 @@
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
-        </dependency>
-
+        </dependency> 
+-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
         </dependency>
-
+ <!-- 
         <dependency>
             <groupId>genomespace</groupId>
             <artifactId>org.genomespace.jersey-apache-client</artifactId>
@@ -774,7 +779,7 @@
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
             <version>1.0</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

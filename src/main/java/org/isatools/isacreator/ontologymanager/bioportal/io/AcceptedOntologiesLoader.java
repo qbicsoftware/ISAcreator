@@ -2,12 +2,12 @@ package org.isatools.isacreator.ontologymanager.bioportal.io;
 
 import org.isatools.isacreator.configuration.Ontology;
 import org.isatools.isacreator.ontologymanager.BioPortal4Client;
+import org.isatools.isacreator.utils.XPathReader;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Comment;
-import uk.ac.ebi.utils.xml.XPathReader;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
@@ -145,11 +145,6 @@ public class AcceptedOntologiesLoader {
         }
 
         return acceptedOntologies;
-    }
-
-    public static void main(String[] args) {
-        //getAcceptedOntologies();
-        populateAcceptedOntologies();
     }
 
 }
