@@ -42,8 +42,6 @@ import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
 
 import org.isatools.isacreator.configuration.*;
-import org.isatools.isacreator.ontologymanager.OntologyManager;
-import org.isatools.isacreator.ontologymanager.OntologySourceRefObject;
 import org.isatools.isacreator.spreadsheet.model.TableReferenceObject;
 import org.isatools.isacreator.utils.StringProcessing;
 import org.isatools.isatab.configurator.schema.*;

@@ -38,9 +38,9 @@
 package org.isatools.isacreator.model;
 
 import org.apache.commons.collections15.map.ListOrderedMap;
-import org.isatools.isacreator.managers.ApplicationManager;
 import org.isatools.isacreator.gui.reference.DataEntryReferenceObject;
 import org.isatools.isacreator.io.importisa.investigationproperties.InvestigationFileSection;
+import org.isatools.isacreator.managers.ApplicationManager;
 import org.isatools.isacreator.ontologymanager.OntologyManager;
 
 import java.io.File;
@@ -166,7 +166,6 @@ public class Investigation extends ISASection {
      * @return true if added, false otherwise.
      */
     public boolean addPublication(Publication publication) {
-
         if (!checkPublicationExists(publication.getPublicationTitle())) {
             publication.setReferenceObject(getReferenceObject(), InvestigationFileSection.INVESTIGATION_PUBLICATIONS_SECTION);
             publications.add(publication);

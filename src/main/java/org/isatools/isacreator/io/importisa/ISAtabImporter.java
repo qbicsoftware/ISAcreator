@@ -1,6 +1,7 @@
 package org.isatools.isacreator.io.importisa;
 
 import org.apache.commons.collections15.OrderedMap;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.log4j.Logger;
 import org.isatools.errorreporter.model.ErrorLevel;
 import org.isatools.errorreporter.model.ErrorMessage;
@@ -21,7 +22,6 @@ import org.isatools.isacreator.ontologymanager.bioportal.io.AcceptedOntologies;
 import org.isatools.isacreator.ontologymanager.common.OntologyTerm;
 import org.isatools.isacreator.settings.ISAcreatorProperties;
 import org.isatools.isacreator.spreadsheet.model.TableReferenceObject;
-import uk.ac.ebi.utils.collections.Pair;
 
 import java.io.File;
 import java.io.IOException;
@@ -147,23 +147,23 @@ public abstract class ISAtabImporter {
 
                 messages.addAll(investigationFileImporter.getMessages());
 
-                if (investigationFileImport.fst) {
+                if (investigationFileImport.getLeft()) {
                     log.info("Import of Investigation in " + investigationFile.getPath() + " was successful...");
                     log.info("Proceeding to map to Investigation...");
 
                     mapper = new StructureToInvestigationMapper();
 
-                    Pair<Boolean, Investigation> mappingResult = mapper.createInvestigationFromDataStructure(investigationFileImport.snd);
+                    Pair<Boolean, Investigation> mappingResult = mapper.createInvestigationFromDataStructure(investigationFileImport.getRight());
 
                     messages.addAll(mapper.getMessages());
 
-                    if (!mappingResult.fst) {
+                    if (!mappingResult.getLeft()) {
                         ISAFileErrorReport investigationErrorReport = new ISAFileErrorReport(investigationFile.getName(), FileType.INVESTIGATION, messages);
                         errors.add(investigationErrorReport);
                         return false;
                     }
 
-                    investigation = mappingResult.snd;
+                    investigation = mappingResult.getRight();
                     investigation.setFileReference(investigationFile.getPath());
 
                     if (investigation.getReferenceObject() != null) {

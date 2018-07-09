@@ -37,10 +37,12 @@
 
 package org.isatools.isacreator.utils.datastructures;
 
-import uk.ac.ebi.utils.collections.Pair;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * Created by the ISA team
@@ -54,21 +56,21 @@ public class SetUtils<T> {
 
     public Pair<Boolean, Set<T>> compareSets(Set<T> setA, Set<T> setB, boolean enforceSizeMatch) {
 
-        Pair<Boolean, Set<T>> result = new Pair<Boolean, Set<T>>(false, new HashSet<T>());
+        Pair<Boolean, Set<T>> result = new MutablePair<Boolean, Set<T>>(false, new HashSet<T>());
 
         for (T value : setB) {
             if (!setA.contains(value)) {
-                result.snd.add(value);
+                result.getRight().add(value);
             }
         }
 
-        if (result.snd.size() > 0) {
+        if (result.getRight().size() > 0) {
             return result;
         } else {
             if (enforceSizeMatch) {
-                return new Pair<Boolean, Set<T>>(setA.size() == setB.size(), null);
+                return new MutablePair<Boolean, Set<T>>(setA.size() == setB.size(), null);
             }
-            return new Pair<Boolean, Set<T>>(true, null);
+            return new MutablePair<Boolean, Set<T>>(true, null);
         }
     }
 

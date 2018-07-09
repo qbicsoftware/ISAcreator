@@ -39,61 +39,10 @@ package org.isatools.isacreator.model;
 
 
 /**
- * Study design representation in model
+ * Superclass for all study subform data e.g. factors, assays, protocols and contacts.
  *
  * @author Eamonn Maguire
  */
-public class StudyDesign extends ISASection implements StudySubData {
-
-    public static final String STUDY_DESIGN_TYPE = "Study Design Type";
-    public static final String STUDY_DESIGN_TYPE_TERM_ACCESSION = "Study Design Type Term Accession Number";
-    public static final String STUDY_DESIGN_TYPE_TERM_SOURCE_REF = "Study Design Type Term Source REF";
-
-    public StudyDesign() {
-        this("");
-    }
-
-    /**
-     * Study Design object
-     *
-     * @param studyDesignType - String representing the Study Design.
-     */
-    public StudyDesign(String studyDesignType) {
-        this(studyDesignType, "", "");
-    }
-
-
-    /**
-     * Study Design object
-     *
-     * @param studyDesignType          - String representing the Study Design.
-     * @param studyDesignTermAccession - String representing the Term Accession (e.g. 000123) for the Ontology term defining the Study Design.
-     * @param studyDesignTermSourceRef - String representing the Term Source REF (e.g. OBI) for the Ontology term defining the Study Design.
-     */
-    public StudyDesign(String studyDesignType, String studyDesignTermAccession, String studyDesignTermSourceRef) {
-        super();
-        fieldValues.put(STUDY_DESIGN_TYPE, studyDesignType);
-        fieldValues.put(STUDY_DESIGN_TYPE_TERM_ACCESSION, studyDesignTermAccession);
-        fieldValues.put(STUDY_DESIGN_TYPE_TERM_SOURCE_REF, studyDesignTermSourceRef);
-    }
-
-    public String getStudyDesignType() {
-        return getValue(STUDY_DESIGN_TYPE);
-    }
-
-    public String getStudyDesignTypeTermAcc() {
-        return getValue(STUDY_DESIGN_TYPE_TERM_ACCESSION);
-    }
-
-    public String getStudyDesignTypeTermSourceRef() {
-        return getValue(STUDY_DESIGN_TYPE_TERM_SOURCE_REF);
-    }
-
-    public void setStudyDesignType(String studyDesignType) {
-        fieldValues.put(STUDY_DESIGN_TYPE, studyDesignType);
-    }
-
-    public String getIdentifier() {
-        return getStudyDesignType();
-    }
+public interface StudySubData {
+    public String getIdentifier();
 }

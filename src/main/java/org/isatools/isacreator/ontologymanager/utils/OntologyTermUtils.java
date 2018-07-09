@@ -1,7 +1,7 @@
 package org.isatools.isacreator.ontologymanager.utils;
 
 import org.isatools.isacreator.io.IOUtils;
-import org.isatools.isacreator.ontologymanager.BioPortal4Client;
+//import org.isatools.isacreator.ontologymanager.BioPortal4Client;
 import org.isatools.isacreator.ontologymanager.OntologyManager;
 import org.isatools.isacreator.ontologymanager.OntologySourceRefObject;
 import org.isatools.isacreator.ontologymanager.common.OntologyTerm;
@@ -42,33 +42,34 @@ public class OntologyTermUtils {
      return ontologyTerm.getOntologyTermName() + "," +  ontologyTerm.getOntologyTermAccession() +"," + ontologyTerm.getOntologySource();
    }
 
-    public static String getURI(OntologyTerm ontologyTerm){
-        if (ontologyTerm==null || ontologyTerm.getOntologyTermAccession()==null
-                || ontologyTerm.getOntologySourceInformation()==null || ontologyTerm.getOntologySourceInformation().getSourceName()==null)
-            return null;
-
-        BioPortal4Client bioPortalClient = new BioPortal4Client();
-        Map<String, List<OntologyTerm>> result = bioPortalClient.exactSearch(ontologyTerm.getOntologyTermName(),
-                ontologyTerm.getOntologySourceInformation().getSourceName());
-
-
-        Set<String> set = result.keySet();
-        if (!set.isEmpty()){
-            List<OntologyTerm> list = result.get(set.iterator().next());
-            if (list.size()>0){
-                OntologyTerm oo = list.get(0);
-
-                ontologyTerm.setOntologyTermIRI(oo.getOntologyTermURI());
-                //ontologyTerm.setOntologyTermAccession(oo.getOntologyTermName());
-                return ontologyTerm.getOntologyTermURI();
-                //ontologyTerm.setOntologyTermAccession(oo.getOntologyTermAccession());
-            }
-        } //else {
-          //  OntologyManager.addToNoURITermMap(ontologyTerm.getShortForm(), ontologyTerm);
-        //}
-
-        return null;
-    }
+   //TODO removed
+//    public static String getURI(OntologyTerm ontologyTerm){
+//        if (ontologyTerm==null || ontologyTerm.getOntologyTermAccession()==null
+//                || ontologyTerm.getOntologySourceInformation()==null || ontologyTerm.getOntologySourceInformation().getSourceName()==null)
+//            return null;
+//
+//        BioPortal4Client bioPortalClient = new BioPortal4Client();
+//        Map<String, List<OntologyTerm>> result = bioPortalClient.exactSearch(ontologyTerm.getOntologyTermName(),
+//                ontologyTerm.getOntologySourceInformation().getSourceName());
+//
+//
+//        Set<String> set = result.keySet();
+//        if (!set.isEmpty()){
+//            List<OntologyTerm> list = result.get(set.iterator().next());
+//            if (list.size()>0){
+//                OntologyTerm oo = list.get(0);
+//
+//                ontologyTerm.setOntologyTermIRI(oo.getOntologyTermURI());
+//                //ontologyTerm.setOntologyTermAccession(oo.getOntologyTermName());
+//                return ontologyTerm.getOntologyTermURI();
+//                //ontologyTerm.setOntologyTermAccession(oo.getOntologyTermAccession());
+//            }
+//        } //else {
+//          //  OntologyManager.addToNoURITermMap(ontologyTerm.getShortForm(), ontologyTerm);
+//        //}
+//
+//        return null;
+//    }
 
 
    public static OntologyTerm stringToOntologyTerm(String header){

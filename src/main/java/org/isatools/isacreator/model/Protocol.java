@@ -37,8 +37,6 @@
 
 package org.isatools.isacreator.model;
 
-import org.isatools.isacreator.gui.StudySubData;
-
 import java.io.Serializable;
 
 

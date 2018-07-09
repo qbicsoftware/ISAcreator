@@ -37,9 +37,6 @@
 
 package org.isatools.isacreator.model;
 
-import org.isatools.isacreator.gui.StudySubData;
-
-
 /**
  * Publication representation in model
  *
