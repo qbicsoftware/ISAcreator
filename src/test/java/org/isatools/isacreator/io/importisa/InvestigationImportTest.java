@@ -38,6 +38,7 @@
 package org.isatools.isacreator.io.importisa;
 
 import org.apache.commons.collections15.OrderedMap;
+import org.apache.commons.lang3.tuple.Pair;
 import org.isatools.errorreporter.model.ErrorMessage;
 import org.isatools.isacreator.io.CommonTestIO;
 import org.isatools.isacreator.io.importisa.investigationproperties.InvestigationFileSection;
@@ -45,7 +46,6 @@ import org.isatools.isacreator.managers.ConfigurationManager;
 import org.isatools.isacreator.model.Investigation;
 import org.isatools.isacreator.model.Publication;
 import org.junit.Test;
-import uk.ac.ebi.utils.collections.Pair;
 
 import java.io.File;
 import java.io.IOException;
@@ -78,15 +78,15 @@ public class InvestigationImportTest implements CommonTestIO {
         try {
             Pair<Boolean, OrderedMap<String, OrderedMap<InvestigationFileSection, OrderedMap<String, List<String>>>>> result = importer.importInvestigationFile(testInvestigationFile);
 
-            assertTrue("Investigation did not validate\n" + printMessages(importer), result.fst);
+            assertTrue("Investigation did not validate\n" + printMessages(importer), result.getLeft());
 
             StructureToInvestigationMapper mapper = new StructureToInvestigationMapper();
 
-            Pair<Boolean, Investigation> investigationImport = mapper.createInvestigationFromDataStructure(result.snd);
+            Pair<Boolean, Investigation> investigationImport = mapper.createInvestigationFromDataStructure(result.getRight());
 
-            if (investigationImport.fst) {
+            if (investigationImport.getLeft()) {
 
-                Investigation investigation = investigationImport.snd;
+                Investigation investigation = investigationImport.getRight();
 
                 System.out.println("Investigation title: " + investigation.getInvestigationTitle());
 
