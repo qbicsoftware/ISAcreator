@@ -132,7 +132,6 @@ public class InvestigationImport {
                     if (lineLabel.contains("Comment"))
                         valueToTitleCase = StringProcessing.removeSpaceFromQualifiedField(StringProcessing.convertStringToTitleCase(lineLabel));
 
-                    //System.out.println(valueToTitleCase);
                     if (!importedInvestigationFile.get(currentMajorSection).get(currentMinorSection).containsKey(valueToTitleCase)) {
                         importedInvestigationFile.get(currentMajorSection).get(currentMinorSection).put(valueToTitleCase, new ArrayList<String>());
                     }
@@ -217,7 +216,7 @@ public class InvestigationImport {
     private List<String[]> loadFile(File investigationFile) throws IOException {
         List<String[]> fileContents = new ArrayList<String[]>();
         if (investigationFile.exists()) {
-            CSVReader csvReader = new CSVReader(new FileReader(investigationFile), '\t',
+            CSVReader csvReader = new CSVReader(new FileReader(investigationFile), TAB_DELIM,
                     CSVParser.DEFAULT_QUOTE_CHARACTER, '|');
             String[] line;
             while((line = csvReader.readNext()) != null) {
@@ -227,6 +226,7 @@ public class InvestigationImport {
                     }
                 }
             }
+            csvReader.close();
 
             return fileContents;
         } else {
