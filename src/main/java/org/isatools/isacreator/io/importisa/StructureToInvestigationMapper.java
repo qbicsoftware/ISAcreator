@@ -121,7 +121,6 @@ public class StructureToInvestigationMapper {
             processInvestigationSection(investigationSections.get(investigationSection));
         sectionFields.put(investigationSection, processedInvestigationSection.getLeft());
         tmpInvestigation = processedInvestigationSection.getRight();
-        System.out.println(tmpInvestigation);
 
       } else if (investigationSection == InvestigationFileSection.ONTOLOGY_SECTION) {
 
@@ -764,7 +763,6 @@ public class StructureToInvestigationMapper {
     for (OntologyTerm oo : ontologyTermsDefined) {
       if (!definedOntologySources.contains(oo.getOntologySource())
           && !oo.getOntologySource().equals("")) {
-        System.out.println(oo.getShortForm());
         if (!GeneralUtils.isValueURL(oo.getShortForm())) {
           missingOntologyObjects.add(oo.getOntologySource());
         }

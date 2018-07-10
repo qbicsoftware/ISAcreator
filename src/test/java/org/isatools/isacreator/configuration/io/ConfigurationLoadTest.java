@@ -1,7 +1,5 @@
 package org.isatools.isacreator.configuration.io;
 
-import org.isatools.isatab.configurator.schema.UnitFieldType;
-import org.isatools.isatab.configurator.schema.impl.UnitFieldTypeImpl;
 import org.junit.Test;
 
 import java.io.File;

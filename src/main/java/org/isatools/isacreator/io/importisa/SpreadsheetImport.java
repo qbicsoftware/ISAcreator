@@ -88,6 +88,7 @@ public class SpreadsheetImport {
                     tro.addRowData(colHeaders, nextLine);
                 }
             }
+            reader.close();
 
             return tro;
         } else {

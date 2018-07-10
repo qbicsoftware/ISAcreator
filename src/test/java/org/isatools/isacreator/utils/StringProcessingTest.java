@@ -17,7 +17,6 @@ public class StringProcessingTest {
     public void testSpaceRemovalInQualifier() {
         String comment = "Comment [Technical Validation]";
         comment = StringProcessing.removeSpaceFromQualifiedField(comment);
-        System.out.println(comment);
         assertEquals("Comment should have no spaces...", comment, "Comment[Technical Validation]");
     }
 }
