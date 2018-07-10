@@ -35,7 +35,7 @@ public class BioPortalClient4Test {
 
         OntologyTerm term = terms.get(0);
 
-        System.out.println("term URI ="+term.getOntologyTermURI());
+//        System.out.println("term URI ="+term.getOntologyTermURI());
 
     }
 
@@ -46,7 +46,7 @@ public class BioPortalClient4Test {
 
         OntologyTerm result = client.getTerm(testTermAccession, ontologyId);
 
-        System.out.println(result.getOntologyTermName() + " - " + result.getOntologySource() + " - " + result.getOntologyTermURI() );
+//        System.out.println(result.getOntologyTermName() + " - " + result.getOntologySource() + " - " + result.getOntologyTermURI() );
     }
 
     @Test
@@ -57,13 +57,13 @@ public class BioPortalClient4Test {
         Map<OntologySourceRefObject, List<OntologyTerm>> result = client.getTermsByPartialNameFromSource(testSearchTerm, obiOntologyId, false);
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + "ms to do query '" + testSearchTerm +"' in OBI.");
 
-        for (OntologySourceRefObject source : result.keySet()) {
-            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
-
-            for (OntologyTerm term : result.get(source)) {
-                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
-            }
-        }
+//        for (OntologySourceRefObject source : result.keySet()) {
+//            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
+//
+//            for (OntologyTerm term : result.get(source)) {
+//                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
+//            }
+//        }
     }
 
     @Test
@@ -76,13 +76,13 @@ public class BioPortalClient4Test {
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + "ms to do that query.");
 
 
-        for (OntologySourceRefObject source : result.keySet()) {
-            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
-
-            for (OntologyTerm term : result.get(source)) {
-                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
-            }
-        }
+//        for (OntologySourceRefObject source : result.keySet()) {
+//            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
+//
+//            for (OntologyTerm term : result.get(source)) {
+//                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
+//            }
+//        }
 
     }
 
@@ -95,13 +95,13 @@ public class BioPortalClient4Test {
         Map<OntologySourceRefObject, List<OntologyTerm>> result = client.getTermsByPartialNameFromSource("cy5", "all", false);
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + "ms to do that query.");
 
-        for (OntologySourceRefObject source : result.keySet()) {
-            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
-
-            for (OntologyTerm term : result.get(source)) {
-                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
-            }
-        }
+//        for (OntologySourceRefObject source : result.keySet()) {
+//            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
+//
+//            for (OntologyTerm term : result.get(source)) {
+//                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
+//            }
+//        }
 
     }
 
@@ -116,13 +116,13 @@ public class BioPortalClient4Test {
         System.out.println("Took " + (System.currentTimeMillis() - startTime) + "ms to do that query.");
 
 
-        for (OntologySourceRefObject source : result.keySet()) {
-            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
-
-            for (OntologyTerm term : result.get(source)) {
-                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
-            }
-        }
+//        for (OntologySourceRefObject source : result.keySet()) {
+//            System.out.println(source.getSourceName() + " (" + source.getSourceVersion() + ")");
+//
+//            for (OntologyTerm term : result.get(source)) {
+//                System.out.println("\t" + term.getOntologyTermName() + " (" + term.getOntologyTermAccession() + ")");
+//            }
+//        }
 
     }
 
@@ -144,10 +144,10 @@ public class BioPortalClient4Test {
         assertTrue("Oh no! No returned ontologies (empty result)! ", ontologies.size() > 0);
 
         System.out.println("Found " + ontologies.size() + " ontologies \n");
-        for (Ontology ontology : ontologies) {
-            System.out.println(ontology.getOntologyID() + " - " + ontology.getOntologyAbbreviation() + " -> " + ontology.getOntologyDisplayLabel()
-                    + " -> " + ontology.getOntologyVersion() + " - " + ontology.getHomepage() + " " + ontology.getContactName());
-        }
+//        for (Ontology ontology : ontologies) {
+//            System.out.println(ontology.getOntologyID() + " - " + ontology.getOntologyAbbreviation() + " -> " + ontology.getOntologyDisplayLabel()
+//                    + " -> " + ontology.getOntologyVersion() + " - " + ontology.getHomepage() + " " + ontology.getContactName());
+//        }
     }
 
     @Test
@@ -157,9 +157,9 @@ public class BioPortalClient4Test {
 
         assertTrue("No ontology roots found for " + testOntologySource, ontologyRoots.size() > 0);
 
-        for(String key : ontologyRoots.keySet()) {
-            System.out.println(key + " - " + ontologyRoots.get(key).getOntologyTermName());
-        }
+//        for(String key : ontologyRoots.keySet()) {
+//            System.out.println(key + " - " + ontologyRoots.get(key).getOntologyTermName());
+//        }
 
     }
 
@@ -171,9 +171,9 @@ public class BioPortalClient4Test {
 
         assertTrue("No parents roots found for " + testTermAccession, parentTerms.size() > 0);
 
-        for (OntologyTerm term : parentTerms.values()) {
-            System.out.println(term);
-        }
+//        for (OntologyTerm term : parentTerms.values()) {
+//            System.out.println(term);
+//        }
 
         System.out.println("Found " + parentTerms.size() + " parents for 45781");
     }
@@ -186,9 +186,9 @@ public class BioPortalClient4Test {
 
         assertTrue("No children found for " + testTermAccession, childTerms.size() > 0);
 
-        for (OntologyTerm term : childTerms.values()) {
-            System.out.println(term);
-        }
+//        for (OntologyTerm term : childTerms.values()) {
+//            System.out.println(term);
+//        }
 
         System.out.println("Found " + childTerms.size() + " children for information entity in " + testOntologySource);
     }

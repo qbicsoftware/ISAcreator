@@ -37,9 +37,9 @@ public class ProtocolTest {
                  );
 
         String[] parameterNames = protocol.getProtocolParameterNames();
-        for(String parameterName:parameterNames){
-            System.out.println(parameterName);
-        }
+//        for(String parameterName:parameterNames){
+//            System.out.println(parameterName);
+//        }
 
         assert(protocol.getProtocolParameterNames().length==2);
     }

@@ -131,7 +131,7 @@ public class ConfigXMLParser {
 
         for (IsaTabConfigFileType isaConfigFile : definitions) {
 
-            System.out.println("definitions = " + isaConfigFile.toString());
+//            System.out.println("definitions = " + isaConfigFile.toString());
 
             for (IsaTabConfigurationType doc : isaConfigFile.getIsatabConfigurationArray()) {
 
