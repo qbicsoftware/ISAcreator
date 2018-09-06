@@ -5,7 +5,7 @@
 	<groupId>life.qbic</groupId>
 	<artifactId>isa-creator-lib</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.7.13</version>
+	<version>1.7.14-SNAPSHOT</version>
 	<name>ISAcreator</name>
 	<url>http://www.isa-tools.org</url>
 
@@ -459,13 +459,13 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>life.qbic</groupId>
-			<artifactId>data-model-lib</artifactId>
-			<version>0.1.0</version>
-		</dependency>
 		<!-- <dependency> <groupId>net.java.dev.fuse</groupId> <artifactId>fuse-core</artifactId> 
 			</dependency> -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.7</version>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-net</groupId>
