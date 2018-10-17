@@ -20,5 +20,4 @@
         <priority value="info"/>
         <appender-ref ref="FILE"/>
     </root>
-
 </log4j:configuration>
