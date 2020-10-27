@@ -38,7 +38,7 @@
 
 package org.isatools.isacreator.ontologymanager.bioportal.io;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.isatools.isacreator.configuration.Ontology;
 import org.isatools.isacreator.ontologymanager.OntologySourceRefObject;
 

@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -45,10 +46,8 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>oerc</id>
-			<url>http://frog.oerc.ox.ac.uk:8080/nexus-2.1.2/content/groups/oerc</url>
-		</repository>
+		<!-- repository> <id>oerc</id> <url>http://frog.oerc.ox.ac.uk:8080/nexus-2.1.2/content/groups/oerc</url> 
+			</repository -->
 
 		<repository>
 			<id>mvnrepository</id>
@@ -75,7 +74,7 @@
 			</snapshots>
 			<id>nexus-snapshots</id>
 			<name>QBiC Snapshots</name>
-			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-snapshots</url>
+			<url>http://qbic-repo.qbic.uni-tuebingen.de:8081/repository/maven-snapshots</url>
 		</repository>
 		<repository>
 			<releases>
@@ -88,7 +87,7 @@
 			</snapshots>
 			<id>nexus-releases</id>
 			<name>QBiC Releases</name>
-			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-releases</url>
+			<url>http://qbic-repo.qbic.uni-tuebingen.de:8081/repository/maven-releases</url>
 		</repository>
 
 	</repositories>
@@ -204,7 +203,7 @@
 				</executions>
 			</plugin>
 
-			<plugin>
+			<!--plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>xmlbeans-maven-plugin</artifactId>
 				<version>2.3.3</version>
@@ -222,7 +221,7 @@
 						${project.basedir}/target/generated/xmlbeans
 					</sourceGenerationDirectory>
 				</configuration>
-			</plugin>
+			</plugin-->
 
 			<!-- http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl is no longer 
 				available, commenting out this plugin -->
@@ -343,9 +342,12 @@
 				<dependency> <groupId>stax</groupId> <artifactId>stax-api</artifactId> <version>1.0.1</version> 
 				</dependency> <dependency> <groupId>net.sourceforge.jexcelapi</groupId> <artifactId>jxl</artifactId> 
 				<version>2.6.3</version> <exclusions> <exclusion> <artifactId>log4j</artifactId> 
-				<groupId>log4j</groupId> </exclusion> </exclusions> </dependency> dependency> 
-				<groupId>org.apache.xmlbeans</groupId> <artifactId>xmlbeans</artifactId> 
-				<version>2.3.0</version> </dependency> -->
+				<groupId>log4j</groupId> </exclusion> </exclusions> </dependency -->
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>2.3.0</version>
+			</dependency>
 
 			<dependency>
 				<groupId>log4j</groupId>
@@ -433,12 +435,8 @@
 				<artifactId>com.springsource.org.apache.commons.httpclient</artifactId>
 				<version>3.1.0</version>
 				<exclusions>
-					<!--exclusion>
-						<artifactId>
-                            com.springsource.org.apache.commons.codec
-                        </artifactId>
-						<groupId>org.apache.commons</groupId>
-					</exclusion-->
+					<!--exclusion> <artifactId> com.springsource.org.apache.commons.codec 
+						</artifactId> <groupId>org.apache.commons</groupId> </exclusion -->
 
 
 					<exclusion>
@@ -504,8 +502,11 @@
 			</dependency> <dependency> <groupId>xml-apis</groupId> <artifactId>xml-apis</artifactId> 
 			</dependency> <dependency> <groupId>stax</groupId> <artifactId>stax-api</artifactId> 
 			</dependency> <dependency> <groupId>net.sourceforge.jexcelapi</groupId> <artifactId>jxl</artifactId> 
-			</dependency> <dependency> <groupId>org.apache.xmlbeans</groupId> <artifactId>xmlbeans</artifactId> 
-			</dependency> -->
+			</dependency -->
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -676,13 +677,13 @@
 			<uniqueVersion>true</uniqueVersion>
 			<id>nexus-releases</id>
 			<name>QBiC Releases</name>
-			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-releases</url>
+			<url>http://qbic-repo.qbic.uni-tuebingen.de:8081/repository/maven-releases</url>
 		</repository>
 		<snapshotRepository>
 			<uniqueVersion>false</uniqueVersion>
 			<id>nexus-snapshots</id>
 			<name>QBiC Snapshots</name>
-			<url>https://qbic-repo.am10.uni-tuebingen.de/repository/maven-snapshots</url>
+			<url>http://qbic-repo.qbic.uni-tuebingen.de:8081/repository/maven-snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
